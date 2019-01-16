@@ -45,10 +45,18 @@ class Annonce
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="date", type="date", nullable=true)
+     * @ORM\Column(name="creationDate", type="datetime")
      */
-    private $date;
+    private $creationDate;
 
+
+    /**
+     * Annonce constructor.
+     */
+    public function __construct()
+    {
+        $this->creationDate = new \DateTime();
+    }
 
     /**
      * Get id
@@ -133,27 +141,27 @@ class Annonce
     }
 
     /**
-     * Set date
+     * Set creationDate
      *
-     * @param \DateTime $date
+     * @param \DateTime $creationDate
      *
      * @return Annonce
      */
-    public function setDate($date)
+    public function setDate($creationDate)
     {
-        $this->date = $date;
+        $this->creationDate = $creationDate;
 
         return $this;
     }
 
     /**
-     * Get date
+     * Get creationDate
      *
      * @return \DateTime
      */
     public function getDate()
     {
-        return $this->date;
+        return $this->creationDate;
     }
 }
 
