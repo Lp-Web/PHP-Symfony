@@ -14,13 +14,15 @@ class AnnonceFixture extends Fixture {
      * @param ObjectManager $manager
      */
     public function load(ObjectManager $manager) {
-        $annonce = new Annonce();
-        $annonce -> setName("Portable 359 pouces royal de luxe, compatbile Fortnite");
-        $annonce -> setDescription("Se portabl manifiq, vs prokura dé sensasion innedit qd vs vs rigolé a se je merveiille sur se fantastik je ké Fortnite ");
-        $annonce -> setPrix(4000);
+        for($i = 0; $i <= 10000000; $i++) {
+            $annonce = new Annonce();
+            $annonce -> setName("Portable 359 pouces royal de luxe, compatbile Fortnite");
+            $annonce -> setDescription("Se portabl manifiq, vs prokura dé sensasion innedit qd vs vs rigolé a se je merveiille sur se fantastik je ké Fortnite ");
+            $annonce -> setPrix(4000);
 
-        $manager -> persist($annonce);
-        $manager -> flush();
+            $manager -> persist($annonce);
+            $manager -> flush();
+        }
     }
 
 }
