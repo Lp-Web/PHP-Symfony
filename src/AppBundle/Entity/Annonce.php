@@ -189,5 +189,13 @@ class Annonce
     {
         $this->category = $category;
     }
+
+    /**
+     * @return \DateTime
+     */
+    public function getCreationDate()
+    {
+        return $this->creationDate;
+    }
 }
 

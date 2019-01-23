@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>{{ category.name }} Annonces</h1>
+
+    <table>
+        <th>Nom</th>
+        <th>Prix</th>
+
+        {% for annonce in category.annonces %}
+            <tr>
+                <td>{{ annonce.name }}</td>
+                <td>{{ annonce.prix }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}
