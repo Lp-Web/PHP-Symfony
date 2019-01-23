@@ -49,6 +49,12 @@ class Annonce
      */
     private $creationDate;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="Category", inversedBy="annonces")
+     * @ORM\JoinColumn(name="category_id", referencedColumnName="id")
+     */
+    private $category;
+
 
     /**
      * Annonce constructor.
@@ -162,6 +168,26 @@ class Annonce
     public function getDate()
     {
         return $this->creationDate;
+    }
+
+    /**
+     * Get category
+     *
+     * @return mixed
+     */
+    public function getCategory()
+    {
+        return $this->category;
+    }
+
+    /**
+     * Set category
+     *
+     * @param mixed $category
+     */
+    public function setCategory($category)
+    {
+        $this->category = $category;
     }
 }
 
