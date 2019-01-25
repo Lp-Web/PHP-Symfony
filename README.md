@@ -76,7 +76,7 @@ Enjoy!
 [14]: https://symfony.com/doc/current/setup/built_in_web_server.html
 [15]: https://symfony.com/doc/current/setup.html
 
-##Run Server
-    composer install &&&composer run-script run
+## Run Server
+    composer install && composer run-script run
 
 After go to http://localhost:8080
