@@ -6,6 +6,7 @@ use AppBundle\Entity\Annonce;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
 /**
  * Annonce controller.
@@ -36,6 +37,8 @@ class AnnonceController extends Controller
      *
      * @Route("/new", name="annonces_new")
      * @Method({"GET", "POST"})
+     *
+     * @IsGranted("ROLE_USER")
      */
     public function newAction(Request $request)
     {
