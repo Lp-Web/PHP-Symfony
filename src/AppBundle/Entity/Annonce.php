@@ -55,6 +55,12 @@ class Annonce
      */
     private $category;
 
+    /**
+     * @var \Boolean
+     * @ORM\Column(name="unable", type="boolean", nullable=false)
+     */
+    private $unable;
+
 
     /**
      * Annonce constructor.
@@ -62,6 +68,15 @@ class Annonce
     public function __construct()
     {
         $this->creationDate = new \DateTime();
+        $this -> setUnable(true);
+    }
+
+    public function setUnable($unable) {
+        $this -> unable = $unable;
+    }
+
+    public function getUnable() {
+        return $this -> unable;
     }
 
     /**
