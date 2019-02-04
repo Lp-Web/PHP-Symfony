@@ -1,55 +1,53 @@
 {% extends 'base.html.twig' %}
 
+{% block title %}
+    {{ parent() }} - Annonces
+{% endblock %}
+
 {% block body %}
-    <h1>Annonces list</h1>
+    <div class="container-fluid">
+        <h1>Liste des annonces</h1>
 
-    <table>
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Description</th>
-                <th>Prix</th>
-                <th>Category</th>
-                <th>Creationdate</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for annonce in annonces %}
-            <tr>
-                <td><a href="{{ path('annonces_show', { 'id': annonce.id }) }}">{{ annonce.id }}</a></td>
-                <td>{{ annonce.name }}</td>
-                <td>{{ annonce.description }}</td>
-                <td>{{ annonce.prix }}
-                <td>
-                    {% if annonce.category %}
-                        {{ annonce.category.name }}
-                    {% endif %}
-                </td>
-                <td>
-                    {% if annonce.creationDate %}
-                        {{ annonce.creationDate|date('Y-m-d H:i:s') }}
-                    {% endif %}
-                </td>
-                <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('annonces_show', { 'id': annonce.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('annonces_edit', { 'id': annonce.id }) }}">edit</a>
-                        </li>
-                    </ul>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Prix (€)</th>
+                    <th scope="col">Category</th>
+                    <th scope="col">Creationdate</th>
+                    <th scope="col">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for annonce in annonces if annonce.unable %}
+                <tr>
+                    <td><a href="{{ path('annonces_show', { 'id': annonce.id }) }}">{{ annonce.id }}</a></td>
+                    <td>{{ annonce.name }}</td>
+                    <td>{{ annonce.description }}</td>
+                    <td>{{ annonce.prix }}
+                    <td>
+                        {% if annonce.category %}
+                            {{ annonce.category.name }}
+                        {% endif %}
+                    </td>
+                    <td>
+                        {% if annonce.creationDate %}
+                            {{ annonce.creationDate|date('Y-m-d H:i:s') }}
+                        {% endif %}
+                    </td>
+                    <td>
+                        <a href="{{ path('annonces_show', { 'id': annonce.id }) }}"><i class="fas fa-eye"></i></a>
+                        <a href="{{ path('annonces_edit', { 'id': annonce.id }) }}"><i class="fas fa-edit"></i></a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
 
-    <ul>
-        <li>
-            <a href="{{ path('annonces_new') }}">Create a new annonce</a>
-        </li>
-    </ul>
+        <div class="list-group">
+            <a href="{{ path('annonces_new') }}" class="list-group-item list-group-item-action">Create a new annonce</a>
+        </div>
+    </div>
 {% endblock %}
