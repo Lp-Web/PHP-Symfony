@@ -1,10 +1,15 @@
 {% extends 'base.html.twig' %}
 
-{% block body %}
-    <h1>Annonce</h1>
+{% block title %}
+    {{ parent() }} - Annonces
+{% endblock %}
 
-    <table>
-        <tbody>
+{% block body %}
+    <div class="container-fluid">
+        <h1>Annonce</h1>
+
+        <table class="table">
+            <tbody>
             <tr>
                 <th>Id</th>
                 <td>{{ annonce.id }}</td>
@@ -37,20 +42,17 @@
                     {% endif %}
                 </td>
             </tr>
-        </tbody>
-    </table>
+            </tbody>
+        </table>
 
-    <ul>
-        <li>
-            <a href="{{ path('annonces_index') }}">Back to the list</a>
-        </li>
-        <li>
-            <a href="{{ path('annonces_edit', { 'id': annonce.id }) }}">Edit</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
+        {{ form_start(delete_form) }}
+        <input type="submit" class="btn btn-danger" value="Delete">
+        {{ form_end(delete_form) }}
+
+        <br>
+        <div class="btn-group-vertical">
+            <a href="{{ path('annonces_index') }}" class="btn btn-secondary">Back to the list</a>
+            <a href="{{ path('annonces_edit', { 'id': annonce.id }) }}" class="btn btn-secondary">Edit</a>
+        </div>
+    </div>
 {% endblock %}
